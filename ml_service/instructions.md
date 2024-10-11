@@ -12,3 +12,6 @@ uvicorn recommendation_service:app
 
 5. Запуск тестирования сервиса последних событий 
 python test_events_service.py
+
+5. Запуск тестирования всего сервиса
+python test_recommendations_service.py 
