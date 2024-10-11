@@ -77,7 +77,7 @@ uvicorn recommendation_service:app
 
 # Инструкции для тестирования сервиса
 
-Код для тестирования сервиса находится в файле `ml_service/tests/test_recommendations_service.py`.
+Код для тестирования сервиса находится в файле `ml_service/tests/test_recommendation_service.py`.
 
 1. cd mle-project-sprint-4-v001/ml_service/tests
 
