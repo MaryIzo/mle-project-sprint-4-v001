@@ -1,0 +1,12 @@
+2024-10-11 10:46:02,186 - uvicorn.error - INFO - Started server process [3696]
+2024-10-11 10:46:02,186 - uvicorn.error - INFO - Waiting for application startup.
+2024-10-11 10:46:02,186 - uvicorn.error - INFO - Starting load
+2024-10-11 10:46:02,277 - uvicorn.error - INFO - Loaded personal recommendations
+2024-10-11 10:46:02,387 - uvicorn.error - INFO - Loaded top recommendations
+2024-10-11 10:46:02,387 - uvicorn.error - INFO - Application startup complete.
+2024-10-11 10:46:02,387 - uvicorn.error - INFO - Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+2024-10-11 10:46:20,166 - uvicorn.error - INFO - Getting offline recommendations for user: 1000006
+2024-10-11 10:46:20,203 - uvicorn.error - INFO - Getiing online recommendations for user: 1000006
+2024-10-11 10:46:20,247 - uvicorn.error - INFO - Getiing k blended recommendations for user: 1000006
+2024-10-11 10:46:20,247 - uvicorn.error - INFO - Getting offline recommendations for user: 1000006
+2024-10-11 10:46:20,247 - uvicorn.error - INFO - Getiing online recommendations for user: 1000006

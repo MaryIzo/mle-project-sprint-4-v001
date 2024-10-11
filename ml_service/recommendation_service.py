@@ -13,27 +13,43 @@ features_store_url = "http://127.0.0.1:8010"
 events_store_url = "http://127.0.0.1:8020"
 recommendations_url = 'http://127.0.0.1:8000/recommendations'
 
+# Создаем файл для логгирования всех действий и сохраняем в test_service.log
 logger = logging.getLogger("uvicorn.error")
+file_handler = logging.FileHandler('test_service.log')
+file_handler.setLevel(logging.INFO)
+console_handler = logging.StreamHandler()
+console_handler.setLevel(logging.INFO)
+
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+file_handler.setFormatter(formatter)
+console_handler.setFormatter(formatter)
+
+logger.addHandler(file_handler)
+logger.addHandler(console_handler)
+
 rec_store = Recommendations()
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # код ниже (до yield) выполнится только один раз при запуске сервиса
-    logger.info("Starting")
+    logger.info("Starting load")
 
     rec_store.load(
         "personal",
         "data/final_recommendations_feat.parquet",
         columns=["user_id", "item_id", "rank"],
     )
+    logger.info("Loaded personal recommendations")
     rec_store.load(
         "default",
         "data/top_popular.parquet",
         columns=["item_id", "rank"],
     )
+    logger.info("Loaded top recommendations")
+
     yield
     # этот код выполнится только один раз при остановке сервиса
-    logger.info("Stopping")
+    logger.info("Stopping load")
     
 # создаём приложение FastAPI
 app = FastAPI(title="recommendations", lifespan=lifespan)
@@ -43,7 +59,7 @@ async def recommendations_offline(user_id: int, k: int = 100):
     """
     Возвращает список рекомендаций длиной k для пользователя user_id
     """
-
+    logger.info(f"Getting offline recommendations for user: {user_id}")
 
     recs = rec_store.get(user_id=user_id, k=k)
 
@@ -63,6 +79,7 @@ async def recommendations_online(user_id: int, k: int = 100):
     """
     Возвращает список онлайн-рекомендаций длиной k для пользователя user_id
     """
+    logger.info(f"Getiing online recommendations for user: {user_id}")
 
     headers = {"Content-type": "application/json", "Accept": "text/plain"}
 
@@ -99,6 +116,8 @@ async def recommendations(user_id: int, k: int = 100):
     """
     Возвращает список рекомендаций длиной k для пользователя user_id
     """
+
+    logger.info(f"Getiing k blended recommendations for user: {user_id}")
 
     recs_offline = await recommendations_offline(user_id, k)
     recs_online = await recommendations_online(user_id, k)
