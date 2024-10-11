@@ -61,7 +61,7 @@ jupyter lab --ip=0.0.0.0 --no-browser
 
 # Сервис рекомендаций
 
-Код сервиса рекомендаций находится в файле `recommendations_service.py`.
+Код сервиса рекомендаций находится в файле `ml_service/recommendations_service.py`.
 
 1. cd mle-project-sprint-4-v001/ml_service   
 
@@ -77,7 +77,7 @@ uvicorn recommendation_service:app
 
 # Инструкции для тестирования сервиса
 
-Код для тестирования сервиса находится в файле `test_service.py`.
+Код для тестирования сервиса находится в файле `ml_service/tests/test_recommendations_service.py`.
 
 1. cd mle-project-sprint-4-v001/ml_service/tests
 
