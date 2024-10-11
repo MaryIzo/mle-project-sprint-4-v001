@@ -10,3 +10,8 @@
 2024-10-11 10:46:20,247 - uvicorn.error - INFO - Getiing k blended recommendations for user: 1000006
 2024-10-11 10:46:20,247 - uvicorn.error - INFO - Getting offline recommendations for user: 1000006
 2024-10-11 10:46:20,247 - uvicorn.error - INFO - Getiing online recommendations for user: 1000006
+2024-10-11 10:50:15,249 - uvicorn.error - INFO - Shutting down
+2024-10-11 10:50:15,350 - uvicorn.error - INFO - Waiting for application shutdown.
+2024-10-11 10:50:15,350 - uvicorn.error - INFO - Stopping load
+2024-10-11 10:50:15,350 - uvicorn.error - INFO - Application shutdown complete.
+2024-10-11 10:50:15,350 - uvicorn.error - INFO - Finished server process [3696]
